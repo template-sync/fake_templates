@@ -1,0 +1,41 @@
+<%#
+name: Ansible Roles - Ansible Default
+snippet: false
+model: JobTemplate
+job_category: Ansible Playbook
+description_format: Run Ansible roles
+provider_type: Ansible
+kind: job_template
+organizations:
+- Default Organization
+- DepeSkP
+- ERSumL
+- jUXOTgHXGGp
+- lGswKra
+- org1
+- QoOaThegmx
+- UeOsvoTtmC
+- wKdVHbjovY
+- zGAzHqh
+locations:
+- BQnkRPmaia
+- Default Location
+- iXyIzkR
+- Loc1
+- SJfwaOBSvAHb
+- vmeKkU
+- VYkuNrB
+- wNndyNFmh
+- ZomaYQPo
+%>
+
+---
+- hosts: all
+  pre_tasks:
+    - name: Display all parameters known for the Foreman host
+      debug:
+        var: foreman
+  roles:
+<%- if @host.all_ansible_roles.present? -%>
+<%=   @host.all_ansible_roles.map { |role| "    - #{role.name.strip}" }.join("\n") %>
+<%- end -%>
